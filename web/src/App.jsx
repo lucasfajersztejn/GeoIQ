@@ -16,8 +16,10 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<DevicesSold />} />
-              <Route path="/people" element={<PeopleAttended />} />
-              <Route path="/summary" element={<Summary />} />
+              <Route path="/results" element={<Results />} /> {/*Shows GeoIQOS Information*/}
+              <Route path="/costumer" element={<Costumer />} />
+              <Route path="/information" element={<Information />} />
+              <Route path="/devices" element={<Devices />} />
             </Routes>
           </Router>
         </main>

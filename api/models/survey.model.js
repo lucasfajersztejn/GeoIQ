@@ -20,7 +20,7 @@ const surveySchema = new Schema({
   }, 
   reasonForVisit: { type: String, required: true }, // Motivo de atención (opciones varias)
   outcome: { type: String, required: true }, // Resultado (opciones varias)
-  productTest: { type: Boolean, required: true }, // Prueba de producto (sí/no)
+  productTest: { type: Boolean, required: true,  default: "No" }, // Prueba de producto (sí/no)
   deviceSales: [
     {
       name: String, // Nombre del dispositivo
