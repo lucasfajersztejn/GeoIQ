@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, Route, Router, Routes } from 'react-router'
 
 
 function App() {
@@ -13,8 +13,13 @@ function App() {
         </header>
 
         <main className='bg-blue-600 h-48 flex justify-center items-center gap-5'>
-          <div className='border-cyan-400 border-4'>Grabar encuesta</div>
-          <div className='border-cyan-400 border-4'>Seguimiento de encuestas</div>
+          <Router>
+            <Routes>
+              <Route path="/" element={<DevicesSold />} />
+              <Route path="/people" element={<PeopleAttended />} />
+              <Route path="/summary" element={<Summary />} />
+            </Routes>
+          </Router>
         </main>
 
         <footer className='bg-red-500 h-72'>
