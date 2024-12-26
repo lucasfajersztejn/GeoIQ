@@ -1,5 +1,11 @@
 import { useState } from 'react'
 import { Link, Route, Router, Routes } from 'react-router'
+import Home from './pages/Home'
+import Results from './pages/Results'
+import Costumer from './pages/Costumer'
+import Information from './pages/Information'
+import Devices from './pages/Devices'
+
 
 
 function App() {
@@ -7,25 +13,23 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col h-svh'>
-        <header className='bg-emerald-400 h-72'>
+      <section className='flex flex-col items-center h-svh bg-gray-600'>
+        <header className='h-[33%] w-full'>
 
         </header>
 
-        <main className='bg-blue-600 h-48 flex justify-center items-center gap-5'>
-          <Router>
-            <Routes>
-              <Route path="/" element={<DevicesSold />} />
-              <Route path="/results" element={<Results />} /> {/*Shows GeoIQOS Information*/}
-              <Route path="/costumer" element={<Costumer />} />
-              <Route path="/information" element={<Information />} />
-              <Route path="/devices" element={<Devices />} />
-            </Routes>
-          </Router>
+        <main className='flex justify-center items-center gap-5 h-[33%] w-[85%]'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/costumer" element={<Costumer />} />
+            <Route path="/information" element={<Information />} />
+            <Route path="/devices" element={<Devices />} />
+          </Routes>
         </main>
 
-        <footer className='bg-red-500 h-72'>
-
+        <footer className='h-[33%] w-full'>
+          <div>Something</div>
         </footer>
       </section>
     </>
