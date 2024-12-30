@@ -1,8 +1,11 @@
 import React from 'react'
+import ButtonBox from '../components/Ui/Button/ButtonBox'
 
 const Costumer = () => {
   return (
-    <div>Costumer</div>
+    <>
+      <ButtonBox name='LAS'/>
+    </>
   )
 }
 
