@@ -5,6 +5,7 @@ import Results from './pages/Results'
 import Costumer from './pages/Costumer'
 import Information from './pages/Information'
 import Devices from './pages/Devices'
+import { SurveyProvider } from './context/Survey.context'
 
 
 
@@ -19,13 +20,15 @@ function App() {
         </header>
 
         <main className='flex justify-center items-center gap-5 h-[33%] w-[85%]'>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/costumer" element={<Costumer />} />
-            <Route path="/information" element={<Information />} />
-            <Route path="/devices" element={<Devices />} />
-          </Routes>
+          <SurveyProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/costumer" element={<Costumer />} />
+              <Route path="/information" element={<Information />} />
+              <Route path="/devices" element={<Devices />} />
+            </Routes>
+          </SurveyProvider>
         </main>
 
         <footer className='h-[33%] w-full'>
