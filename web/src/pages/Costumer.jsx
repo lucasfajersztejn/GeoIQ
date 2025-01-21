@@ -17,7 +17,6 @@ const Costumer = () => {
 
   const handleNext = () => {
     if (isFormComplete()) {
-      console.log(surveyData)
       navigate('/information');
     }
   };

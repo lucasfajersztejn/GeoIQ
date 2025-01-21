@@ -31,9 +31,9 @@ function App() {
           </SurveyProvider>
         </main>
 
-        <footer className='h-[33%] w-full'>
+        {/* <footer className='h-[33%] w-full'>
           <div>Something</div>
-        </footer>
+        </footer> */}
       </section>
     </>
   )

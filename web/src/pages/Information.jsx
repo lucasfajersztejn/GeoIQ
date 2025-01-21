@@ -15,18 +15,11 @@ const Information = () => {
     return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined;
   };
 
-  const handleNext = async () => {
+  const handleNext = () => {
     if (isFormComplete()) {
-      try {
-        const response = await axios.post('http://localhost:3000/api/v1/surveys', surveyData);
-        console.log('Survey saved:', response.data);
-        navigate('/devices'); // Navegar a una página de éxito o similar
-      } catch (error) {
-        console.error('Error saving survey:', error);
-      }
+      navigate('/devices');
     }
   };
-
   const handleBack = () => {
     navigate('/costumer');
   };
@@ -62,7 +55,7 @@ const Information = () => {
           disabled={!isFormComplete()}
           className={`w-32 h-12 ${isFormComplete() ? 'bg-cyanCustom' : 'bg-gray-400'} text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500`}
         >
-          Enviar
+          Siguiente
         </button>
       </div>
     </div>

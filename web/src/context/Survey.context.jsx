@@ -22,6 +22,8 @@ export const SurveyProvider = ({ children }) => {
     clientOrigin: '',
     ageGroup: '',
     groupSize: '',
+    deviceSales: [],
+    accessorySales: [],
     // Agrega más campos según sea necesario
   });
 
