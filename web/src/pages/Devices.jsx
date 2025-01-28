@@ -53,7 +53,7 @@ const Devices = () => {
     try {
       const response = await axios.post('http://localhost:3000/api/v1/surveys', surveyData);
       console.log('Survey saved:', response.data);
-      navigate('/success'); // Navegar a una página de éxito o similar
+      navigate('/');
     } catch (error) {
       console.error('Error saving survey:', error);
     }
