@@ -13,4 +13,13 @@ router.post("/surveys", async (req, res) => {
   }
 });
 
+router.get("/surveys", async (req, res) => {
+  try {
+    const surveys = await Survey.find();
+    res.status(200).json(surveys);
+  } catch (error) {
+    res.status(400).json({ message: "Error fetching surveys", error });
+  }
+}); 
+
 module.exports = router;

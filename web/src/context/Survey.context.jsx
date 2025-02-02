@@ -19,6 +19,7 @@ export const SurveyProvider = ({ children }) => {
     salesPoint: 'El corte ingles brand retail',
     seller: 'Lucas',
     clientType: '',
+    consumerType: "",
     clientOrigin: '',
     ageGroup: '',
     groupSize: '',

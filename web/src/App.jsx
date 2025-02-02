@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col items-center h-svh bg-gray-600'>
+      <section className='flex flex-col items-center h-svh bg-gray-100'>
         <header className='h-[33%] w-full'>
 
         </header>

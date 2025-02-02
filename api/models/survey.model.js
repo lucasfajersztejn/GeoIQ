@@ -7,6 +7,7 @@ const surveySchema = new Schema({
   salesPoint: { type: String, required: true },
   seller: { type: String, required: true },
   clientType: { type: String, enum: ['Las', 'Lau', 'Vaper'], required: true }, 
+  consumerType: { type: String, enum: ['Poli SFP', 'Poli CC', 'Exclusivo', ""], required: false, default: "" },
   clientOrigin: { type: String, enum: ['Local', 'Turista'], required: true },
   ageGroup: { 
     type: String, 
@@ -20,19 +21,9 @@ const surveySchema = new Schema({
   }, 
   reasonForVisit: { type: String, required: true }, // Motivo de atención (opciones varias)
   outcome: { type: String, required: true }, // Resultado (opciones varias)
-  productTest: { type: Boolean, required: true,  default: "No" }, // Prueba de producto (sí/no)
-  deviceSales: [
-    {
-      name: String, // Nombre del dispositivo
-      quantity: { type: Number, default: 0 }, // Cantidad vendida
-    },
-  ], // Lista de dispositivos vendidos
-  accessorySales: [
-    {
-      name: String, // Nombre del accesorio
-      quantity: { type: Number, default: 0 }, // Cantidad vendida
-    },
-  ], // Lista de accesorios vendidos
+  productTest: { type: Boolean, required: true, default: false }, // Prueba de producto (sí/no)
+  deviceSales: { type: String, required: false}, // Lista de dispositivos vendidos en formato "nombre (cantidad)"
+  accessorySales: { type: String, required: false}, // Lista de accesorios vendidos en formato "nombre (cantidad)"
 }, { timestamps: true }); // timestamps agrega automáticamente createdAt y updatedAt
 
 module.exports = mongoose.model('Survey', surveySchema);
