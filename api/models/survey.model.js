@@ -22,6 +22,8 @@ const surveySchema = new Schema({
   reasonForVisit: { type: String, required: true }, // Motivo de atención (opciones varias)
   outcome: { type: String, required: true }, // Resultado (opciones varias)
   productTest: { type: Boolean, required: true, default: false }, // Prueba de producto (sí/no)
+  firmwareUpdate: { type: Boolean, required: true, default: false }, 
+  checkIn: { type: Boolean, required: true, default: false },
   deviceSales: { type: String, required: false}, // Lista de dispositivos vendidos en formato "nombre (cantidad)"
   accessorySales: { type: String, required: false}, // Lista de accesorios vendidos en formato "nombre (cantidad)"
 }, { timestamps: true }); // timestamps agrega automáticamente createdAt y updatedAt
