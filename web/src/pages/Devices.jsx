@@ -7,6 +7,18 @@ import oneRed from '../assets/images/One/Red.png';
 import oneGreen from '../assets/images/One/Green.png';
 import oneBlue from '../assets/images/One/Blue.png';
 import oneBeige from '../assets/images/One/Beige.png';
+import IlumaBlue from '../assets/images/Iluma/Iluma azul.png';
+import IlumaBeige from '../assets/images/Iluma/Iluma Beige.png';
+import IlumaGreen from '../assets/images/Iluma/Iluma Green.png';
+import IlumaGrey from '../assets/images/Iluma/Iluma Grey.png';
+import IlumaRed from '../assets/images/Iluma/Iluma Red.png';
+import PrimeBeige from '../assets/images/Prime/Beige.png';
+import PrimeGreen from '../assets/images/Prime/Green.png';
+import PrimeBlack from '../assets/images/Prime/Black.png';
+import PrimeBronze from '../assets/images/Prime/Gris Lunar.png';
+
+
+
 import axios from 'axios';
 
 const Devices = () => {
@@ -90,31 +102,83 @@ const Devices = () => {
       <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4">
         <Card 
           image={oneGrey}
-          title="One Grey" 
-          onCountChange={(count) => handleDeviceCountChange('One Grey', count)}
+          title="Iluma One Pebble Grey" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma One Pebble Grey', count)}
         />
         <Card 
           image={oneRed}º
-          title="One Red" 
-          onCountChange={(count) => handleDeviceCountChange('One Red', count)}
+          title="Iluma One Sunset Red" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma One Sunset Red', count)}
         />
         <Card 
           image={oneGreen}º
-          title="One Green" 
-          onCountChange={(count) => handleDeviceCountChange('One Green', count)}
+          title="Iluma One Moss Green" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma One Moss Green', count)}
         />
         <Card 
           image={oneBlue}º
-          title="One Blue" 
-          onCountChange={(count) => handleDeviceCountChange('One Blue', count)}
+          title="Iluma One Azure Blue" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma One Azure Blue', count)}
         />
         <Card 
           image={oneBeige}º
-          title="One Beige" 
-          onCountChange={(count) => handleDeviceCountChange('One Beige"', count)}
+          title="Iluma One Pebble Beige" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma One Pebble Beige"', count)}
         />
-        {/* Agrega más tarjetas de dispositivos según sea necesario */}
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4 mt-4">
+        <Card 
+          image={IlumaBlue}
+          title="Iluma MK Azure Blue" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma MK Azure Blue', count)}
+        />
+        <Card 
+          image={IlumaBeige}º
+          title="Iluma MK Pebble Beige" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma MK Pebble Beige', count)}
+        />
+        <Card 
+          image={IlumaGreen}º
+          title="Iluma MK Moss Green" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma MK Moss Green', count)}
+        />
+        <Card 
+          image={IlumaGrey}º
+          title="Iluma MK Pebble Grey" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma MK Pebble Grey', count)}
+        />
+        <Card 
+          image={IlumaRed}º
+          title="Iluma MK Sunset Red" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma MK Sunset Red"', count)}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 mt-4">
+        <Card 
+          image={PrimeBeige}
+          title="Iluma Prime Golden Khaki" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma Prime Golden Khaki', count)}
+        />
+        <Card 
+          image={PrimeGreen}º
+          title="Iluma Prime Jade Green" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma Prime Jade Green', count)}
+        />
+        <Card 
+          image={PrimeBlack}º
+          title="Iluma Prime Obsidian Black" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma Prime Obsidian Black', count)}
+        />
+        <Card 
+          image={PrimeBronze}º
+          title="Iluma Prime Bronze Taupe" 
+          onCountChange={(count) => handleDeviceCountChange('Iluma Prime Bronze Taupe', count)}
+        />
+      </div>
+
+
       <h2 className="text-center text-2xl font-bold mt-8 mb-4">Accessories</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Card 

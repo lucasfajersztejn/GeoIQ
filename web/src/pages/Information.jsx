@@ -9,6 +9,8 @@ const Information = () => {
   const [selectedReason, setSelectedReason] = useState('');
   const [selectedOutcome, setSelectedOutcome] = useState('');
   const [selectedProductTest, setSelectedProductTest] = useState('');
+  const [selectedFirmwareUpdate, setSelectedFirmwareUpdate] = useState('');
+  const [selectedCheckIn, setSelectedCheckIn] = useState('');
 
 
   // const handleSelect = (name, value) => {
@@ -23,11 +25,15 @@ const Information = () => {
       setSelectedOutcome(value);
     } else if (name === 'productTest') {
       setSelectedProductTest(value);
-    }
+    } else if (name === 'firmwareUpdate') {
+      setSelectedFirmwareUpdate(value);
+    } else if (name === 'checkIn') {
+      setSelectedCheckIn(value);
+    } 
   };
 
   const isFormComplete = () => {
-    return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined;
+    return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined && surveyData.firmwareUpdate !== undefined && surveyData.checkIn !== undefined;
   };
 
   const handleNext = () => {
@@ -62,26 +68,54 @@ const Information = () => {
           <ButtonBox name="Información sobre promociones" onClick={() => handleSelect('reasonForVisit', 'Informacion sobre promociones')} isSelected={selectedReason === 'Informacion sobre promociones'} />
         </div>
       </div>
+
       <div className="mb-4 flex flex-col">
         <label className="text-center text-2xl font-bold mb-4">Resultado:</label>
         <div className="grid grid-cols-6 gap-4">
           <ButtonBox name="Venta" onClick={() => handleSelect('outcome', 'venta')} isSelected={selectedOutcome === 'venta'} />
           <ButtonBox name="Venta con cupones" onClick={() => handleSelect('outcome', 'venta con cupones')} isSelected={selectedOutcome === 'venta con cupones'} />
           <ButtonBox name="Puntos IQOS CLUB" onClick={() => handleSelect('outcome', 'Puntos IQOS CLUB')} isSelected={selectedOutcome === 'Puntos IQOS CLUB'} />
-          <ButtonBox name="No venta" onClick={() => handleSelect('outcome', 'no venta')} isSelected={selectedOutcome === 'no venta'} />
+          <ButtonBox name="Necesita Pensar" onClick={() => handleSelect('outcome', 'Necesita Pensar')} isSelected={selectedOutcome === 'Necesita Pensar'} />
           <ButtonBox name="Swap IQOS" onClick={() => handleSelect('outcome', 'Swap IQOS')} isSelected={selectedOutcome === 'cambio'} />
           <ButtonBox name="Swap Veev" onClick={() => handleSelect('outcome', 'Swap Veev')} isSelected={selectedOutcome === 'cambio'} />
           <ButtonBox name="Devolución" onClick={() => handleSelect('outcome', 'devolución')} isSelected={selectedOutcome === 'devolución'} />
           <ButtonBox name="Información" onClick={() => handleSelect('outcome', 'información')} isSelected={selectedOutcome === 'información'} />
+          <ButtonBox name="No Interesa" onClick={() => handleSelect('outcome', 'No Interesa')} isSelected={selectedOutcome === 'No Interesa'} />
+          <ButtonBox name="Recuperado" onClick={() => handleSelect('outcome', 'Recuperado')} isSelected={selectedOutcome === 'Recuperado'} />
+          <ButtonBox name="At Cliente Resuelto IQOS" onClick={() => handleSelect('outcome', 'At Cliente Resuelto IQOS')} isSelected={selectedOutcome === 'At Cliente Resuelto IQOS'} />
+          <ButtonBox name="At Cliente Resuelto VEEV" onClick={() => handleSelect('outcome', 'At Cliente Resuelto VEEV')} isSelected={selectedOutcome === 'At Cliente Resuelto VEEV'} />
+          <ButtonBox name="At Cliente Redirigido" onClick={() => handleSelect('outcome', 'At Cliente Redirigido')} isSelected={selectedOutcome === 'At Cliente Redirigido'} />
+          <ButtonBox name="Limpieza" onClick={() => handleSelect('outcome', 'Limpieza')} isSelected={selectedOutcome === 'Limpieza'} />
+          <ButtonBox name="Tabaco Atascado" onClick={() => handleSelect('outcome', 'Tabaco Atascado')} isSelected={selectedOutcome === 'Tabaco Atascado'} />
+          <ButtonBox name="Cliente Turista Sin Iluma en su País" onClick={() => handleSelect('outcome', 'Cliente Turista Sin Iluma en su Pais')} isSelected={selectedOutcome === 'Cliente Turista Sin Iluma en su Pais'} />
+          <ButtonBox name="Herramienta de Extracción Terea" onClick={() => handleSelect('outcome', 'Herramienta de Extraccion Terea')} isSelected={selectedOutcome === 'Herramienta de Extraccion Terea'} />
         </div>
       </div>
+
       <div className="mb-4 flex flex-col">
         <label className="text-center text-2xl font-bold mb-4">Prueba de Producto:</label>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <ButtonBox name="Sí" onClick={() => handleSelect('productTest', true)} isSelected={selectedProductTest === true} />
           <ButtonBox name="No" onClick={() => handleSelect('productTest', false)} isSelected={selectedProductTest === false} />
         </div>
       </div>
+
+      <div className="mb-4 flex flex-col">
+        <label className="text-center text-2xl font-bold mb-4">Actualización de Firmware:</label>
+        <div className="grid grid-cols-2 gap-4">
+          <ButtonBox name="Sí" onClick={() => handleSelect('firmwareUpdate', true)} isSelected={selectedFirmwareUpdate === true} />
+          <ButtonBox name="No" onClick={() => handleSelect('firmwareUpdate', false)} isSelected={selectedFirmwareUpdate === false} />
+        </div>
+      </div>
+
+      <div className="mb-4 flex flex-col">
+        <label className="text-center text-2xl font-bold mb-4">Check In:</label>
+        <div className="grid grid-cols-2 gap-4">
+          <ButtonBox name="Sí" onClick={() => handleSelect('checkIn', true)} isSelected={selectedCheckIn === true} />
+          <ButtonBox name="No" onClick={() => handleSelect('checkIn', false)} isSelected={selectedCheckIn === false} />
+        </div>
+      </div>
+
       <div className="flex space-x-4">
         <button
           onClick={handleBack}
