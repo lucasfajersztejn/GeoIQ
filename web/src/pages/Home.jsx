@@ -35,15 +35,25 @@ const Home = () => {
     navigate('/costumer');
   };
 
+  const handleResults = () => {
+    navigate('/results');
+  };
+
   return (
     <>
       <button
         onClick={handleNewSurvey}
-        className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
+        className="w-52 h-52 bg-cyanCustom text-black font-bold text-2xl rounded-md shadow-md transition-all hover:bg-cyan-500"
       >
         Nueva Encuesta
       </button>
-      <ButtonBoxLink name='GeoIQOS Realizados' to='/results'/>
+
+      <button
+        onClick={handleResults}
+        className="w-52 h-52 bg-cyanCustom text-black font-bold text-2xl rounded-md shadow-md transition-all hover:bg-cyan-500"
+      >
+        GeoIQOS Realizados
+      </button>
     </>
   );
 };

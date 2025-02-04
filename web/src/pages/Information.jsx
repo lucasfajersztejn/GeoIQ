@@ -2,6 +2,26 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SurveyContext } from '../context/Survey.context';
 import ButtonBox from '../components/Ui/Button/ButtonBox';
+import levia from '../assets/images/Levia/Levia.png';
+import vPodBlueMint from '../assets/images/Pods/Blue mint.png';
+import vPodBlueBerry from '../assets/images/Pods/Blueberry.png';
+import vPodClassicTobacco from '../assets/images/Pods/Classic tabaco.png';
+import vPodMango from '../assets/images/Pods/Mango.png';
+import vPodMelonCoconut from '../assets/images/Pods/Melón y Coco.png';
+import vPodPassionFruit from '../assets/images/Pods/Passion fruit, kiwi & guava.png';
+import vPodPineappleAndLemon from '../assets/images/Pods/Piña Limon.png';
+import vPodStrawberry from '../assets/images/Pods/Strawberry.png';
+import vPodWatermelon from '../assets/images/Pods/Watermelon.png';
+import amber from '../assets/images/Terea/Amber.png';
+import russet from '../assets/images/Terea/Russet.png';
+import sienna from '../assets/images/Terea/Sienna.png';
+import softFuse from '../assets/images/Terea/SoftFuse.png';
+import teak from '../assets/images/Terea/Teak.png';
+import turquoise from '../assets/images/Terea/Turquoise.png';
+import warmFuse from '../assets/images/Terea/WarmFuse.png';
+import yellow from '../assets/images/Terea/Yellow.png';
+import Card from '../components/Ui/Card/Card';
+import CardSelected from '../components/Ui/Card/CardSelect';
 
 const Information = () => {
   const { surveyData, setSurveyData } = useContext(SurveyContext);
@@ -11,11 +31,8 @@ const Information = () => {
   const [selectedProductTest, setSelectedProductTest] = useState('');
   const [selectedFirmwareUpdate, setSelectedFirmwareUpdate] = useState('');
   const [selectedCheckIn, setSelectedCheckIn] = useState('');
-
-
-  // const handleSelect = (name, value) => {
-  //   setSurveyData({ ...surveyData, [name]: value });
-  // };
+  const [selectedTest1, setSelectedTest1] = useState('');
+  const [selectedTest2, setSelectedTest2] = useState('');
 
   const handleSelect = (name, value) => {
     setSurveyData({ ...surveyData, [name]: value });
@@ -29,19 +46,40 @@ const Information = () => {
       setSelectedFirmwareUpdate(value);
     } else if (name === 'checkIn') {
       setSelectedCheckIn(value);
-    } 
+    } else if (name === 'test1') {
+      setSelectedTest1(value);
+    } else if (name === 'test2') {
+      setSelectedTest2(value);
+    }
   };
 
+  // const isFormComplete = () => {
+  //   return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined && surveyData.firmwareUpdate !== undefined && surveyData.checkIn !== undefined;
+  // };
+
   const isFormComplete = () => {
+    if (surveyData.productTest === 'SI') {
+      return surveyData.reasonForVisit && surveyData.outcome && surveyData.firmwareUpdate && surveyData.checkIn && (surveyData.test1 || surveyData.test2);
+    }
     return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined && surveyData.firmwareUpdate !== undefined && surveyData.checkIn !== undefined;
   };
+
 
   const handleNext = () => {
     if (isFormComplete()) {
       navigate('/devices');
     }
   };
+
   const handleBack = () => {
+    setSurveyData(prevData => ({
+      ...prevData,
+      clientType: '',
+      consumerType: '',
+      clientOrigin: '',
+      ageGroup: '',
+      groupSize: ''
+    }));
     navigate('/costumer');
   };
 
@@ -74,7 +112,6 @@ const Information = () => {
         <div className="grid grid-cols-6 gap-4">
           <ButtonBox name="Venta" onClick={() => handleSelect('outcome', 'venta')} isSelected={selectedOutcome === 'venta'} />
           <ButtonBox name="Venta con cupones" onClick={() => handleSelect('outcome', 'venta con cupones')} isSelected={selectedOutcome === 'venta con cupones'} />
-          <ButtonBox name="Puntos IQOS CLUB" onClick={() => handleSelect('outcome', 'Puntos IQOS CLUB')} isSelected={selectedOutcome === 'Puntos IQOS CLUB'} />
           <ButtonBox name="Necesita Pensar" onClick={() => handleSelect('outcome', 'Necesita Pensar')} isSelected={selectedOutcome === 'Necesita Pensar'} />
           <ButtonBox name="Swap IQOS" onClick={() => handleSelect('outcome', 'Swap IQOS')} isSelected={selectedOutcome === 'cambio'} />
           <ButtonBox name="Swap Veev" onClick={() => handleSelect('outcome', 'Swap Veev')} isSelected={selectedOutcome === 'cambio'} />
@@ -93,14 +130,6 @@ const Information = () => {
       </div>
 
       <div className="mb-4 flex flex-col">
-        <label className="text-center text-2xl font-bold mb-4">Prueba de Producto:</label>
-        <div className="grid grid-cols-2 gap-4">
-          <ButtonBox name="Sí" onClick={() => handleSelect('productTest', true)} isSelected={selectedProductTest === true} />
-          <ButtonBox name="No" onClick={() => handleSelect('productTest', false)} isSelected={selectedProductTest === false} />
-        </div>
-      </div>
-
-      <div className="mb-4 flex flex-col">
         <label className="text-center text-2xl font-bold mb-4">Actualización de Firmware:</label>
         <div className="grid grid-cols-2 gap-4">
           <ButtonBox name="Sí" onClick={() => handleSelect('firmwareUpdate', true)} isSelected={selectedFirmwareUpdate === true} />
@@ -115,6 +144,66 @@ const Information = () => {
           <ButtonBox name="No" onClick={() => handleSelect('checkIn', false)} isSelected={selectedCheckIn === false} />
         </div>
       </div>
+
+      <div className="mb-4 flex flex-col">
+        <label className="text-center text-2xl font-bold mb-4">Prueba de Producto:</label>
+        <div className="grid grid-cols-2 gap-4">
+          <ButtonBox name="Sí" onClick={() => handleSelect('productTest', true)} isSelected={selectedProductTest === true} />
+          <ButtonBox name="No" onClick={() => handleSelect('productTest', false)} isSelected={selectedProductTest === false} />
+        </div>
+      </div>
+
+      {selectedProductTest === true && (
+        <>
+          <div className="mb-4 flex flex-col">
+            <label className="text-center text-2xl font-bold mb-4">Prueba 1:</label>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <CardSelected image={levia} title="Levia" onClick={() => handleSelect('test1', 'Levia')} isSelected={selectedTest1 === 'Levia'} />
+              <CardSelected image={vPodBlueMint} title="Blue Mint" onClick={() => handleSelect('test1', 'Blue Mint')} isSelected={selectedTest1 === 'Blue Mint'} />
+              <CardSelected image={vPodBlueBerry} title="Blueberry" onClick={() => handleSelect('test1', 'Blueberry')} isSelected={selectedTest1 === 'Blueberry'} />
+              <CardSelected image={vPodClassicTobacco} title="Classic Tobacco" onClick={() => handleSelect('test1', 'Classic Tobacco')} isSelected={selectedTest1 === 'Classic Tobacco'} />
+              <CardSelected image={vPodMango} title="Mango" onClick={() => handleSelect('test1', 'Mango')} isSelected={selectedTest1 === 'Mango'} />
+              <CardSelected image={vPodMelonCoconut} title="Melón y Coco" onClick={() => handleSelect('test1', 'Melón y Coco')} isSelected={selectedTest1 === 'Melón y Coco'} />
+              <CardSelected image={vPodPassionFruit} title="Passion Fruit, Kiwi & Guava" onClick={() => handleSelect('test1', 'Passion Fruit, Kiwi & Guava')} isSelected={selectedTest1 === 'Passion Fruit, Kiwi & Guava'} />
+              <CardSelected image={vPodPineappleAndLemon} title="Piña Limón" onClick={() => handleSelect('test1', 'Piña Limón')} isSelected={selectedTest1 === 'Piña Limón'} />
+              <CardSelected image={vPodStrawberry} title="Strawberry" onClick={() => handleSelect('test1', 'Strawberry')} isSelected={selectedTest1 === 'Strawberry'} />
+              <CardSelected image={vPodWatermelon} title="Watermelon" onClick={() => handleSelect('test1', 'Watermelon')} isSelected={selectedTest1 === 'Watermelon'} />
+              <CardSelected image={amber} title="Amber" onClick={() => handleSelect('test1', 'Amber')} isSelected={selectedTest1 === 'Amber'} />
+              <CardSelected image={russet} title="Russet" onClick={() => handleSelect('test1', 'Russet')} isSelected={selectedTest1 === 'Russet'} />
+              <CardSelected image={sienna} title="Sienna" onClick={() => handleSelect('test1', 'Sienna')} isSelected={selectedTest1 === 'Sienna'} />
+              <CardSelected image={softFuse} title="Soft Fuse" onClick={() => handleSelect('test1', 'Soft Fuse')} isSelected={selectedTest1 === 'Soft Fuse'} />
+              <CardSelected image={teak} title="Teak" onClick={() => handleSelect('test1', 'Teak')} isSelected={selectedTest1 === 'Teak'} />
+              <CardSelected image={turquoise} title="Turquoise" onClick={() => handleSelect('test1', 'Turquoise')} isSelected={selectedTest1 === 'Turquoise'} />
+              <CardSelected image={warmFuse} title="Warm Fuse" onClick={() => handleSelect('test1', 'Warm Fuse')} isSelected={selectedTest1 === 'Warm Fuse'} />
+              <CardSelected image={yellow} title="Yellow" onClick={() => handleSelect('test1', 'Yellow')} isSelected={selectedTest1 === 'Yellow'} />
+            </div>
+          </div>
+
+          <div className="mb-4 flex flex-col">
+            <label className="text-center text-2xl font-bold mb-4">Prueba 2:</label>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <CardSelected image={levia} title="Levia" onClick={() => handleSelect('test2', 'Levia')} isSelected={selectedTest2 === 'Levia'} />
+              <CardSelected image={vPodBlueMint} title="Blue Mint" onClick={() => handleSelect('test2', 'Blue Mint')} isSelected={selectedTest2 === 'Blue Mint'} />
+              <CardSelected image={vPodBlueBerry} title="Blueberry" onClick={() => handleSelect('test2', 'Blueberry')} isSelected={selectedTest2 === 'Blueberry'} />
+              <CardSelected image={vPodClassicTobacco} title="Classic Tobacco" onClick={() => handleSelect('test2', 'Classic Tobacco')} isSelected={selectedTest2 === 'Classic Tobacco'} />
+              <CardSelected image={vPodMango} title="Mango" onClick={() => handleSelect('test2', 'Mango')} isSelected={selectedTest2 === 'Mango'} />
+              <CardSelected image={vPodMelonCoconut} title="Melón y Coco" onClick={() => handleSelect('test2', 'Melón y Coco')} isSelected={selectedTest2 === 'Melón y Coco'} />
+              <CardSelected image={vPodPassionFruit} title="Passion Fruit, Kiwi & Guava" onClick={() => handleSelect('test2', 'Passion Fruit, Kiwi & Guava')} isSelected={selectedTest2 === 'Passion Fruit, Kiwi & Guava'} />
+              <CardSelected image={vPodPineappleAndLemon} title="Piña Limón" onClick={() => handleSelect('test2', 'Piña Limón')} isSelected={selectedTest2 === 'Piña Limón'} />
+              <CardSelected image={vPodStrawberry} title="Strawberry" onClick={() => handleSelect('test2', 'Strawberry')} isSelected={selectedTest2 === 'Strawberry'} />
+              <CardSelected image={vPodWatermelon} title="Watermelon" onClick={() => handleSelect('test2', 'Watermelon')} isSelected={selectedTest2 === 'Watermelon'} />
+              <CardSelected image={amber} title="Amber" onClick={() => handleSelect('test2', 'Amber')} isSelected={selectedTest2 === 'Amber'} />
+              <CardSelected image={russet} title="Russet" onClick={() => handleSelect('test2', 'Russet')} isSelected={selectedTest2 === 'Russet'} />
+              <CardSelected image={sienna} title="Sienna" onClick={() => handleSelect('test2', 'Sienna')} isSelected={selectedTest2 === 'Sienna'} />
+              <CardSelected image={softFuse} title="Soft Fuse" onClick={() => handleSelect('test2', 'Soft Fuse')} isSelected={selectedTest2 === 'Soft Fuse'} />
+              <CardSelected image={teak} title="Teak" onClick={() => handleSelect('test2', 'Teak')} isSelected={selectedTest2 === 'Teak'} />
+              <CardSelected image={turquoise} title="Turquoise" onClick={() => handleSelect('test2', 'Turquoise')} isSelected={selectedTest2 === 'Turquoise'} />
+              <CardSelected image={warmFuse} title="Warm Fuse" onClick={() => handleSelect('test2', 'Warm Fuse')} isSelected={selectedTest2 === 'Warm Fuse'} />
+              <CardSelected image={yellow} title="Yellow" onClick={() => handleSelect('test2', 'Yellow')} isSelected={selectedTest2 === 'Yellow'} />
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="flex space-x-4">
         <button

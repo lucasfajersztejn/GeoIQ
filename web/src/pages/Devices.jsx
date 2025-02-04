@@ -32,11 +32,31 @@ import vUltraMango from '../assets/images/Veev ultra/Mango.png';
 import vUltraPassionFruit from '../assets/images/Veev ultra/Passion fruit kiwi guava.png';
 import vUltraStrawberry from '../assets/images/Veev ultra/Strawberry.png';
 import vUltraWatermelon from '../assets/images/Veev ultra/Watermelon.png';
-
-
-
-
-
+import levia from '../assets/images/Levia/Levia.png';
+import vPodBlueMint from '../assets/images/Pods/Blue mint.png';
+import vPodBlueBerry from '../assets/images/Pods/Blueberry.png';
+import vPodClassicTobacco from '../assets/images/Pods/Classic tabaco.png';
+import vPodMango from '../assets/images/Pods/Mango.png';
+import vPodMelonCoconut from '../assets/images/Pods/Melón y Coco.png';
+import vPodPassionFruit from '../assets/images/Pods/Passion fruit, kiwi & guava.png';
+import vPodPineappleAndLemon from '../assets/images/Pods/Piña Limon.png';
+import vPodStrawberry from '../assets/images/Pods/Strawberry.png';
+import vPodWatermelon from '../assets/images/Pods/Watermelon.png';
+import accAdaptadorDeCorriente from '../assets/images/Accesorios/Adaptador_De_Corriente.png';
+import accIlumaUsbPowerAdaptator from '../assets/images/Accesorios/Cable_De_Carga.png';
+import accIlumaPrimeWrapIridiscent from '../assets/images/Accesorios/Cubierta_Iridiscente.png';
+import accIlumaPrimeWrapMicrofiber from '../assets/images/Accesorios/Cubierta_Microfibra.png';
+import accIlumaPrimeWrapFabric from '../assets/images/Accesorios/Cubierta_Tela.png';
+import accIlumaPrimeWrapLeather from '../assets/images/Accesorios/Wrap_Piel.png';
+import accAluminiumDoorCover from '../assets/images/Accesorios/Door_Aluminium.png';
+import accIlumaDoor from '../assets/images/Accesorios/Door_Metalica.png';
+import accNeonDoor from '../assets/images/Accesorios/Door_Neon.png';
+import accFabricSleeve from '../assets/images/Accesorios/Fabric_Sleeve.png';
+import accFabricSleeveOne from '../assets/images/Accesorios/Fabric_Sleeve_One.png';
+import accRingPremium from '../assets/images/Accesorios/Ring_Premium.png';
+import accRingStandard from '../assets/images/Accesorios/Ring_Standar.png';
+import accSiliconeSleeve from '../assets/images/Accesorios/Silicone_Sleeve.png';
+import accSiliconeSleeveOne from '../assets/images/Accesorios/Silicone_Sleeve_One.png';
 import axios from 'axios';
 
 const Devices = () => {
@@ -108,8 +128,13 @@ const Devices = () => {
   const handleBack = () => {
     setSurveyData(prevData => ({
       ...prevData,
-      deviceSales: [],
-      accessorySales: []
+      reasonForVisit: '',
+      outcome: '',
+      test1: '',
+      test2: '',
+      productTest: false,
+      firmwareUpdate: false,
+      checkIn: false
     }));
     navigate('/information');
   };
@@ -117,6 +142,8 @@ const Devices = () => {
   return (
     <div className="flex flex-col items-center">
       <h2 className="text-center text-2xl font-bold mb-4">Devices</h2>
+    
+      {/* ILUMA ONE */}
       <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4">
         <Card 
           image={oneGrey}
@@ -145,6 +172,7 @@ const Devices = () => {
         />
       </div>
 
+      {/* ILUMA */}
       <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4 mt-4">
         <Card 
           image={IlumaGrey}º
@@ -173,6 +201,7 @@ const Devices = () => {
         />
       </div>
 
+      {/* PRIME */}
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 mt-4">
         <Card 
           image={PrimeBlack}º
@@ -196,6 +225,7 @@ const Devices = () => {
         />
       </div>
 
+      {/* E-LIMIT */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
         <Card 
           image={oneAoki}º
@@ -214,6 +244,7 @@ const Devices = () => {
         />
       </div>
 
+      {/* VEEV ONE */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
         <Card 
           image={oneStarterKit}º
@@ -247,6 +278,7 @@ const Devices = () => {
         />
       </div>
 
+      {/* VEEV ULTRA */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         <Card 
           image={vUltraBlueRaspberry}º
@@ -284,21 +316,144 @@ const Devices = () => {
           onCountChange={(count) => handleDeviceCountChange('VEEV ULTRA Watermelon', count)}
         />
       </div>
+      
+      <div className='w-full mt-10 h-1 bg-black'></div>
 
+      
+      {/* Accesorios */}
       <h2 className="text-center text-2xl font-bold mt-8 mb-4">Accessories</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card 
-          image="https://via.placeholder.com/150"
-          title="Accessory 1" 
-          onCountChange={(count) => handleAccessoryCountChange('Accessory 1', count)}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
+        <Card
+          image={levia}
+          title="Levia"
+          onCountChange={(count) => handleAccessoryCountChange('Levia', count)}
         />
-        <Card 
-          image="https://via.placeholder.com/150"
-          title="Accessory 2" 
-          onCountChange={(count) => handleAccessoryCountChange('Accessory 2', count)}
+        <Card
+          image={vPodBlueMint}
+          title="Pod Blue Mint"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Blue Mint', count)}
         />
-        {/* Agrega más tarjetas de accesorios según sea necesario */}
+        <Card
+          image={vPodBlueBerry}
+          title="Pod Blueberry"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Blue Berry', count)}
+        />
+        <Card
+          image={vPodClassicTobacco}
+          title="Pod Classic Tobacco"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Classic Tobacco', count)}
+        />
+        <Card
+          image={vPodMango}
+          title="Pod Mango"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Mango', count)}
+        />
+        <Card
+          image={vPodMelonCoconut}
+          title="Pod Melon Coconut"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Melon Coconut', count)}
+        />
+        <Card
+          image={vPodPassionFruit}
+          title="Pod Passion Fruit"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Passion Fruit', count)}
+        />
+        <Card
+          image={vPodPineappleAndLemon}
+          title="Pod Pineapple and Lemon"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Pineapple and Lemon', count)}
+        />
+        <Card
+          image={vPodStrawberry}
+          title="Pod Strawberry"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Strawberry', count)}
+        />
+        <Card
+          image={vPodWatermelon}
+          title="Pod Watermelon"
+          onCountChange={(count) => handleAccessoryCountChange('Pod Watermelon', count)}
+        />
       </div>
+           
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
+        <Card 
+          image={accAdaptadorDeCorriente}
+          title="Adaptador de Corriente" 
+          onCountChange={(count) => handleAccessoryCountChange('Adaptador de Corriente', count)}
+        />
+        <Card 
+          image={accIlumaUsbPowerAdaptator}
+          title="Cable de Carga" 
+          onCountChange={(count) => handleAccessoryCountChange('Cable de Carga', count)}
+        />
+        <Card 
+          image={accIlumaPrimeWrapIridiscent}
+          title="Cubierta Iridiscente" 
+          onCountChange={(count) => handleAccessoryCountChange('Cubierta Iridiscente', count)}
+        />
+        <Card 
+          image={accIlumaPrimeWrapMicrofiber}
+          title="Cubierta Microfibra" 
+          onCountChange={(count) => handleAccessoryCountChange('Cubierta Microfibra', count)}
+        />
+        <Card 
+          image={accIlumaPrimeWrapFabric}
+          title="Cubierta Tela" 
+          onCountChange={(count) => handleAccessoryCountChange('Cubierta Tela', count)}
+        />
+        <Card 
+          image={accIlumaPrimeWrapLeather}
+          title="Cubierta Piel" 
+          onCountChange={(count) => handleAccessoryCountChange('Wrap Piel', count)}
+        />
+        <Card 
+          image={accAluminiumDoorCover}
+          title="Door Aluminium" 
+          onCountChange={(count) => handleAccessoryCountChange('Door Aluminium', count)}
+        />
+        <Card 
+          image={accIlumaDoor}
+          title="Door Metalica" 
+          onCountChange={(count) => handleAccessoryCountChange('Door Metalica', count)}
+        />
+        <Card 
+          image={accNeonDoor}
+          title="Door Neon" 
+          onCountChange={(count) => handleAccessoryCountChange('Door Neon', count)}
+        />
+        <Card 
+          image={accFabricSleeve}
+          title="Fabric Sleeve" 
+          onCountChange={(count) => handleAccessoryCountChange('Fabric Sleeve', count)}
+        />
+        <Card 
+          image={accFabricSleeveOne}
+          title="Fabric Sleeve One"
+          onCountChange={(count) => handleAccessoryCountChange('Fabric Sleeve One', count)}
+        />
+        <Card
+          image={accRingPremium}
+          title="Ring Premium"
+          onCountChange={(count) => handleAccessoryCountChange('Ring Premium', count)}
+        />
+        <Card
+          image={accRingStandard}
+          title="Ring Standard"
+          onCountChange={(count) => handleAccessoryCountChange('Ring Standard', count)}
+        />
+        <Card
+          image={accSiliconeSleeve}
+          title="Silicone Sleeve"
+          onCountChange={(count) => handleAccessoryCountChange('Silicone Sleeve', count)}
+        />
+        <Card
+          image={accSiliconeSleeveOne}
+          title="Silicone Sleeve One"
+          onCountChange={(count) => handleAccessoryCountChange('Silicone Sleeve One', count)}
+        />
+      </div>
+
       <div className="flex space-x-4 mt-8 justify-center my-6">
         <button
           onClick={handleBack}

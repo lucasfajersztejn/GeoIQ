@@ -36,6 +36,8 @@ const Results = () => {
               <th className="py-2 px-4 border-b border-gray-200">Motivo de Visita</th>
               <th className="py-2 px-4 border-b border-gray-200">Resultado</th>
               <th className="py-2 px-4 border-b border-gray-200">Prueba de Producto</th>
+              <th className="py-2 px-4 border-b border-gray-200">Test 1</th>
+              <th className="py-2 px-4 border-b border-gray-200">Test 2</th>
               <th className="py-2 px-4 border-b border-gray-200">Actualización de Firmware</th>
               <th className="py-2 px-4 border-b border-gray-200">Check In</th>
               <th className="py-2 px-4 border-b border-gray-200">Ventas de Dispositivos</th>
@@ -55,6 +57,8 @@ const Results = () => {
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.reasonForVisit}</td>
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.outcome}</td>
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.productTest ? 'Sí' : 'No'}</td>
+                <td className="py-2 px-4 border-b text-center border-gray-200">{item.test1}</td>
+                <td className="py-2 px-4 border-b text-center border-gray-200">{item.test2}</td>
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.firmwareUpdate ? 'Sí' : 'No'}</td>
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.checkIn ? 'Sí' : 'No'}</td>
                 <td className="py-2 px-4 border-b text-center border-gray-200">{item.deviceSales}</td>

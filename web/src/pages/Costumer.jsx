@@ -22,7 +22,6 @@ const Costumer = () => {
         setSurveyData(prevData => ({ ...prevData, consumerType: "" }));
       }
     } else if (name === 'consumerType') {
-      console.log(value);
       setSelectedConsumerType(value);
     }
   };
