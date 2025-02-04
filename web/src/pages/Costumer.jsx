@@ -49,7 +49,7 @@ const Costumer = () => {
     <div className="flex flex-col items-center">
       <div className="mb-4 flex flex-col">
         <label className='text-center text-2xl font-bold mb-4'>Tipo de Cliente:</label>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ButtonBox name="LAS" onClick={() => handleSelect('clientType', 'Las')} isSelected={selectedClientType === 'Las'} />
           <ButtonBox name="LAU" onClick={() => handleSelect('clientType', 'Lau')} isSelected={selectedClientType === 'Lau'} />
           <ButtonBox name="Vaper" onClick={() => handleSelect('clientType', 'Vaper')} isSelected={selectedClientType === 'Vaper'} />
@@ -74,7 +74,7 @@ const Costumer = () => {
       </div>
       <div className="mb-4 flex flex-col">
         <label className='text-center text-2xl font-bold mb-4'>Grupo de Edad:</label>
-        <div className="grid grid-cols-4 gap-4">  
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">  
           <ButtonBox name="18-29" onClick={() => handleSelect('ageGroup', '18-29')} isSelected={surveyData.ageGroup === '18-29'} />
           <ButtonBox name="30-39" onClick={() => handleSelect('ageGroup', '30-39')} isSelected={surveyData.ageGroup === '30-39'} />
           <ButtonBox name="40-49" onClick={() => handleSelect('ageGroup', '40-49')} isSelected={surveyData.ageGroup === '40-49'} />
@@ -83,7 +83,7 @@ const Costumer = () => {
       </div>
       <div className="mb-4 flex flex-col">
         <label className='text-center text-2xl font-bold mb-4'>Cantidad de Personas Atendidas:</label>
-        <div className="grid grid-cols-5 gap-4">  
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 grid-content-center">  
           <ButtonBox name="1" onClick={() => handleSelect('groupSize', '1')} isSelected={surveyData.groupSize === '1'} />
           <ButtonBox name="2" onClick={() => handleSelect('groupSize', '2')} isSelected={surveyData.groupSize === '2'} />
           <ButtonBox name="3" onClick={() => handleSelect('groupSize', '3')} isSelected={surveyData.groupSize === '3'} />
@@ -94,14 +94,14 @@ const Costumer = () => {
       <div className="flex space-x-4">
         <button
           onClick={handleBack}
-          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
+          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4"
         >
           Volver
         </button>
         <button
           onClick={handleNext}
           disabled={!isFormComplete()}
-          className={`w-32 h-12 ${isFormComplete() ? 'bg-cyanCustom' : 'bg-gray-400'} text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500`}
+          className={`w-32 h-12 ${isFormComplete() ? 'bg-cyanCustom' : 'bg-gray-400'} text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4`}
         >
           Siguiente
         </button>

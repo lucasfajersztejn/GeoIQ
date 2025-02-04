@@ -58,6 +58,7 @@ import accRingStandard from '../assets/images/Accesorios/Ring_Standar.png';
 import accSiliconeSleeve from '../assets/images/Accesorios/Silicone_Sleeve.png';
 import accSiliconeSleeveOne from '../assets/images/Accesorios/Silicone_Sleeve_One.png';
 import axios from 'axios';
+import Swal from 'sweetalert';
 
 const Devices = () => {
   const { surveyData, setSurveyData } = useContext(SurveyContext);
@@ -111,16 +112,18 @@ const Devices = () => {
       accessorySales: formattedAccessorySales
     };
 
-    console.log('Survey data:', formattedSurveyData);
-
     try {
       const response = await axios.post('http://localhost:3000/api/v1/surveys', formattedSurveyData);
-      console.log('Survey saved:', response.data);
-      navigate('/'); // Navegar a la página principal
+      Swal({
+        title: "Encuesta realizada con éxito",
+        icon: "success",
+      }).then(() => {
+        navigate('/');
+      });
     } catch (error) {
       console.error('Error saving survey:', error);
       if (error.response && error.response.data) {
-        console.error('Response data:', error.response.data); // Ver el mensaje de error del servidor
+        console.error('Response data:', error.response.data);
       }
     }
   };
@@ -140,7 +143,7 @@ const Devices = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full m-6">
       <h2 className="text-center text-2xl font-bold mb-4">Devices</h2>
     
       {/* ILUMA ONE */}
@@ -323,6 +326,7 @@ const Devices = () => {
       {/* Accesorios */}
       <h2 className="text-center text-2xl font-bold mt-8 mb-4">Accessories</h2>
 
+      {/* VEEV PODS AND LEVIA */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
         <Card
           image={levia}
@@ -375,7 +379,8 @@ const Devices = () => {
           onCountChange={(count) => handleAccessoryCountChange('Pod Watermelon', count)}
         />
       </div>
-           
+      
+      {/* ACCESORIOS IQOS*/}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
         <Card 
           image={accAdaptadorDeCorriente}
@@ -454,16 +459,16 @@ const Devices = () => {
         />
       </div>
 
-      <div className="flex space-x-4 mt-8 justify-center my-6">
+      <div className="flex space-x-4 mt-8 justify-center mb-6 p-">
         <button
           onClick={handleBack}
-          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
+          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4"
         >
           Volver
         </button>
         <button
           onClick={handleNext}
-          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
+          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4"
         >
           Enviar
         </button>

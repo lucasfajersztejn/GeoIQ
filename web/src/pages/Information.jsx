@@ -53,10 +53,6 @@ const Information = () => {
     }
   };
 
-  // const isFormComplete = () => {
-  //   return surveyData.reasonForVisit && surveyData.outcome && surveyData.productTest !== undefined && surveyData.firmwareUpdate !== undefined && surveyData.checkIn !== undefined;
-  // };
-
   const isFormComplete = () => {
     if (surveyData.productTest === 'SI') {
       return surveyData.reasonForVisit && surveyData.outcome && surveyData.firmwareUpdate && surveyData.checkIn && (surveyData.test1 || surveyData.test2);
@@ -84,10 +80,10 @@ const Information = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full">
       <div className="mb-4 flex flex-col">
         <label className="text-center text-2xl font-bold mb-4">Motivo de Atención:</label>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           <ButtonBox name="Comprar Iqos" onClick={() => handleSelect('reasonForVisit', 'Comprar Iqos')} isSelected={selectedReason === 'Comprar Iqos'} />
           <ButtonBox name="Comprar Veev" onClick={() => handleSelect('reasonForVisit', 'Comprar Veev')} isSelected={selectedReason === 'Comprar Veev'} />
           <ButtonBox name="Comprar Accesorios" onClick={() => handleSelect('reasonForVisit', 'Comprar accesorios')} isSelected={selectedReason === 'Comprar accesorios'} />
@@ -109,7 +105,7 @@ const Information = () => {
 
       <div className="mb-4 flex flex-col">
         <label className="text-center text-2xl font-bold mb-4">Resultado:</label>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           <ButtonBox name="Venta" onClick={() => handleSelect('outcome', 'venta')} isSelected={selectedOutcome === 'venta'} />
           <ButtonBox name="Venta con cupones" onClick={() => handleSelect('outcome', 'venta con cupones')} isSelected={selectedOutcome === 'venta con cupones'} />
           <ButtonBox name="Necesita Pensar" onClick={() => handleSelect('outcome', 'Necesita Pensar')} isSelected={selectedOutcome === 'Necesita Pensar'} />
@@ -157,7 +153,7 @@ const Information = () => {
         <>
           <div className="mb-4 flex flex-col">
             <label className="text-center text-2xl font-bold mb-4">Prueba 1:</label>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
               <CardSelected image={levia} title="Levia" onClick={() => handleSelect('test1', 'Levia')} isSelected={selectedTest1 === 'Levia'} />
               <CardSelected image={vPodBlueMint} title="Blue Mint" onClick={() => handleSelect('test1', 'Blue Mint')} isSelected={selectedTest1 === 'Blue Mint'} />
               <CardSelected image={vPodBlueBerry} title="Blueberry" onClick={() => handleSelect('test1', 'Blueberry')} isSelected={selectedTest1 === 'Blueberry'} />
@@ -181,7 +177,7 @@ const Information = () => {
 
           <div className="mb-4 flex flex-col">
             <label className="text-center text-2xl font-bold mb-4">Prueba 2:</label>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
               <CardSelected image={levia} title="Levia" onClick={() => handleSelect('test2', 'Levia')} isSelected={selectedTest2 === 'Levia'} />
               <CardSelected image={vPodBlueMint} title="Blue Mint" onClick={() => handleSelect('test2', 'Blue Mint')} isSelected={selectedTest2 === 'Blue Mint'} />
               <CardSelected image={vPodBlueBerry} title="Blueberry" onClick={() => handleSelect('test2', 'Blueberry')} isSelected={selectedTest2 === 'Blueberry'} />
@@ -208,14 +204,14 @@ const Information = () => {
       <div className="flex space-x-4">
         <button
           onClick={handleBack}
-          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
+          className="w-32 h-12 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4"
         >
           Volver
         </button>
         <button
           onClick={handleNext}
           disabled={!isFormComplete()}
-          className={`w-32 h-12 ${isFormComplete() ? 'bg-cyanCustom' : 'bg-gray-400'} text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500`}
+          className={`w-32 h-12 ${isFormComplete() ? 'bg-cyanCustom' : 'bg-gray-400'} text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500 mb-4`}
         >
           Siguiente
         </button>

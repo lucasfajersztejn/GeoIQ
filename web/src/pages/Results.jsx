@@ -19,6 +19,10 @@ const Results = () => {
     fetchData();
   }, []);
 
+  const handleBack = () => {
+    navigate('/');
+  };
+
   return (
     <div className="p-4 flex flex-col items-center">
       <h2 className="text-center text-2xl font-bold mb-4">Resultados de GeoIQOS</h2>
@@ -70,7 +74,7 @@ const Results = () => {
       </div>
 
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => handleBack()}
         className="m-6 px-4 py-2 bg-cyanCustom text-white font-semibold rounded-md shadow-md transition-all hover:bg-cyan-500"
       >
         Volver

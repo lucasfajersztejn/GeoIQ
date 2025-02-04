@@ -14,12 +14,12 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col items-center h-svh bg-gray-100'>
-        <header className='h-[33%] w-full'>
+      <section className='flex flex-col items-center h-svh'>
+        {/* <header className='h-[33%] w-full'>
           <h1>GEO IQOS</h1>
-        </header>
+        </header> */}
 
-        <main className='flex justify-center items-center gap-5 w-[85%] mt-10'>
+        <main className='flex justify-center items-center gap-5 h-full w-[85%] mt-10'>
           <SurveyProvider>
             <Routes>
               <Route path="/" element={<Home />} />
